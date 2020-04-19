@@ -11,6 +11,7 @@ const routes = [
     { path: '/', component: Menu },
     { path: '/TimeAndPlace', component: TimeAndPlace },
     { path: '/Check', component: Check },
+    { path: '/Confimation', component: Confirmation }
 ];
 
 const router = new VueRouter({

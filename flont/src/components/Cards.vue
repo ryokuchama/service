@@ -1,17 +1,18 @@
 <template>
   <div class="text-center">
     <h1><slot></slot></h1>
-    <v-card v-for="(item, index) in sectionItems" :key="index" class="ma-2">
-      <v-card-title class="justify-center">
+    <v-card
+     v-for="(item, index) in sectionItems" :key="index" class="ma-2">
+
+      <v-img
+      src="item.photo">
+        <v-card-title class="justify-center">
         {{ item.title }}
       </v-card-title>
+      </v-img>
       
       <v-card-text>
         {{ item.text }}
-      </v-card-text>
-
-      <v-card-text>
-        {{ item.link }}
       </v-card-text>
     </v-card>
   </div>
