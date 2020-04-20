@@ -21,8 +21,8 @@
       <v-col>
       <p>注文内容:</p>
       <p>合計金額:</P>
-        <v-btn align-center>
-          <router-link to="/TimeAndPlace">Step2: 受け取り場所と時間</router-link>
+        <v-btn align-center to="/TimeAndPlace">
+          Step2: 受け取り場所と時間
         </v-btn>
     </v-col>
     </v-layout>
@@ -43,32 +43,32 @@ import Cards from '@/components/Cards.vue'
       return {
         foodItems: [
           {
-            'title': '',
-            'text': ''
+            'title': 'チーズハンバーガー',
+            'text': '1000円'
           },
           {
-            'title': '',
-            'text': ''
+            'title': 'フライドポテト',
+            'text': '200円'
           },
         ],
         drinkItems: [
           {
-            'title': '',
-            'text': ''
+            'title': 'ビール',
+            'text': '500円'
           },
           {
-            'title': '',
-            'text': ''
+            'title': 'コーラ',
+            'text': '500円'
           }
         ],
         desertItems: [
           {
-            'title': '',
-            'text': ''
+            'title': 'パフェ',
+            'text': '500円'
           },
           {
-            'title': '',
-            'text': ''
+            'title': 'チーズケーキ',
+            'text': '300円'
           }
         ]
       }

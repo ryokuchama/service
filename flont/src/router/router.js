@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Menu from './components/Menu.vue';
-import TimeAndPlace from './components/TimeAndPlace.vue';
-import Check from './components/Check.vue';
-import Confirmation from './components/Confirmation.vue';
+import Menu from '../views/Menu.vue';
+import TimeAndPlace from '../views/TimeAndPlace.vue';
+import Check from '../views/Check.vue';
+import Confirmation from '../views/Confirmation.vue';
 
 Vue.use(VueRouter);
 
