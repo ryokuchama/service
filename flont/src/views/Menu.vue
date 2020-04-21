@@ -3,17 +3,17 @@
     <v-layout>
       <v-flex>
         <div>
-          Food
+          <h2>Food</h2>
           <Cards :section-items="foodItems">
         </Cards>
         </div>
         <div>
-          Drink
+          <h2>Drink</h2>
           <Cards :section-items="drinkItems">
         </Cards>
         </div>
         <div>
-          Desert
+          <h2>Desert</h2>
           <Cards :section-items="desertItems">
         </Cards>
         </div>
@@ -21,9 +21,7 @@
       <v-col>
       <p>注文内容:</p>
       <p>合計金額:</P>
-        <v-btn align-center to="/TimeAndPlace">
-          Step2: 受け取り場所と時間
-        </v-btn>
+      <v-btn tag="v-btn" to="/TimeAndPlace">Step2: 受け取り場所と時間→</v-btn>
     </v-col>
     </v-layout>
   </v-container>
