@@ -13,19 +13,17 @@
     </v-app-bar>
 
     <v-content>
-      <Menu/>
+      <router-view></router-view>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import Menu from './views/Menu.vue';
 
 export default {
   name: 'App',
 
   components: {
-    Menu,
   },
 
   data: () => ({

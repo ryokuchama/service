@@ -15,6 +15,8 @@
       <v-card-text>
         {{ item.text }}
       </v-card-text>
+      <v-btn v-on="on">SELECT</v-btn>
+      <Dialog></Dialog>
        </v-card>
       </v-row>
     </v-container>  
@@ -22,7 +24,12 @@
 </template>
 
 <script>
+import Dialog from '@/components/Dialog.vue'
+
 export default {
+  components: {
+    Dialog
+  },
   props: {
     sectionItems: {
       type: Array,

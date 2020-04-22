@@ -1,7 +1,7 @@
 <template>
     <v-container fluid>
     <p>{{ radios || 'null' }}</p>
-    <v-radio-group v-model="radios" :mandatory="false">
+    <v-radio-group v-model="radios" :mandatory=true>
       <v-radio label="テイクアウト" value=0></v-radio>
       <v-radio label="デリバリー" value=1></v-radio>
     </v-radio-group>
