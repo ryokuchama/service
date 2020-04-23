@@ -4,11 +4,18 @@
     <v-radio-group v-model="radios" :mandatory=true>
       <v-radio label="テイクアウト" value=0></v-radio>
       <v-radio label="デリバリー" value=1></v-radio>
+      <small>※デリバリーは大須、上前津、伏見に限ります。</small>
     </v-radio-group>
-    <div class="takeout" v-show="this.radios == 0">
-      <select name="yaku" v-model="yaku">
-          <option v-for="yaku in yakus" :key="yaku" name="yaku" :value="yaku">{{ yaku }}</option>
-        </select>
+    <div class="time">
+      <h2>受け取り/宅配時刻</h2>
+      <select name="hour" v-model="hour">
+          <option v-for="hour in hours" :key="hour" name="hour" :value="hour">{{ hour }}</option>
+      </select>
+      <label>時</label>
+      <select name="minute" v-model="minute">
+          <option v-for="minute in minutes" :key="minute" name="minute" :value="yaku">{{ minute }}</option>
+      </select>
+      <label>分</label>
     </div>
     <div class="delivery" v-show="this.radios == 1">
       <select name="yaku" v-model="yaku">
@@ -24,8 +31,10 @@
 export default {
     data() {
       return{
-        minutes: [15, 20, 25, 30, 45, 60],
-        hour: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+        minute: 0,
+        minutes: [0, 10, 20, 30, 40, 50],
+        hour: 10,
+        hours: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
       }
     }
 }
