@@ -1,4 +1,5 @@
 <template>
+<v-app>
   <v-container>
     <v-layout>
       <v-flex>
@@ -25,6 +26,7 @@
     </v-col>
     </v-layout>
   </v-container>
+</v-app>
 </template>
 
 <script>

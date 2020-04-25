@@ -1,4 +1,5 @@
 <template>
+<v-app>
     <v-container fluid>
     <p>{{ radios || 'null' }}</p>
     <v-radio-group v-model="radios" :mandatory=true>
@@ -18,13 +19,17 @@
       <label>分</label>
     </div>
     <div class="delivery" v-show="this.radios == 1">
-      <select name="yaku" v-model="yaku">
-        <option v-for="yaku in yakus" :key="yaku" name="yaku" :value="yaku">{{ yaku }}</option>
-      </select>
+      <v-text-field
+            v-model="adress"
+            :rules="nameRules"
+            label="adress"
+            required
+          ></v-text-field>
     </div>
     <v-btn tag="v-btn" to="/">←メニューを選び直す</v-btn>
     <v-btn tag="v-btn" to="/Check">Step3: 注文内容確認→</v-btn>
   </v-container>
+</v-app>
 </template>
 
 <script>

@@ -1,4 +1,5 @@
 <template>
+<v-app>
   <div class="text-center">
     <h1><slot></slot></h1>
     <v-container>
@@ -33,6 +34,7 @@
       </v-row>
     </v-container>  
   </div>
+</v-app>
 </template>
 
 <script>
