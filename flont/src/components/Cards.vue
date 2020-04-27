@@ -1,20 +1,20 @@
 <template>
 <v-app>
   <v-col>
-    <h1><slot></slot></h1>
-      <v-card @click.stop="dialog=true"
-      v-for="(item, index) in sectionItems" :key="index"
-      class="ma-1" width="400">
-        <v-img
-        src="item.photo">
-          <v-card-title class="justify-center">
-          {{ item.title }}
-          </v-card-title>
-        </v-img>          
-        <v-card-text>
-          {{ item.text }}
-        </v-card-text>
-      </v-card>
+      <h1><slot></slot></h1>
+        <v-card class="mx-auto" @click.stop="dialog=true"
+        v-for="(item, index) in sectionItems" :key="index"
+        max-width="500">
+          <v-img
+          src="item.photo">
+            <v-card-title class="justify-center">
+            {{ item.title }}
+            </v-card-title>
+          </v-img>          
+          <v-card-text>
+            {{ item.text }}
+          </v-card-text>
+        </v-card>
   </v-col>
     <v-dialog v-model="dialog" scrollable max-width="80%">
       <v-card>

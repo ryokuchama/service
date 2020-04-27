@@ -1,24 +1,30 @@
 <template>
-  <v-container v-scroll:#scroll="onScroll">
-    <v-row id="scroll">
-      <v-col>
+<v-app>
+  <v-container fluid>
+    <v-row>
+      <v-col class="card">
           <h2>Food</h2>
           <Cards :section-items="foodItems">
-        </Cards>
+          </Cards>
+      </v-col>
+        <v-col>
           <h2>Drink</h2>
           <Cards :section-items="drinkItems">
-        </Cards>
+          </Cards>
+        </v-col>
+        <v-col>
           <h2>Desert</h2>
           <Cards :section-items="desertItems">
-        </Cards>
+          </Cards>
       </v-col>
-      <v-col fixed>
+      <v-col class="total">
         <p>注文内容:</p>
         <p>合計金額:</P>
         <v-btn tag="v-btn" to="/TimeAndPlace">Step2: 受け取り場所と時間</v-btn>
       </v-col>
     </v-row>
   </v-container>
+</v-app>
 </template>
 
 <script>
@@ -72,3 +78,7 @@ import Cards from '@/components/Cards.vue'
     },
   }
 </script>
+
+<style scoped>
+
+</style>
