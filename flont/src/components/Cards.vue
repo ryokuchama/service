@@ -1,10 +1,10 @@
 <template>
 <v-app>
-  <v-layout>
-    <v-flex scrollable>
+  <v-col>
     <h1><slot></slot></h1>
       <v-card @click.stop="dialog=true"
-      v-for="(item, index) in sectionItems" :key="index" class="ma-1">
+      v-for="(item, index) in sectionItems" :key="index"
+      class="ma-1" width="400">
         <v-img
         src="item.photo">
           <v-card-title class="justify-center">
@@ -15,8 +15,7 @@
           {{ item.text }}
         </v-card-text>
       </v-card>
-    </v-flex>
-  </v-layout>
+  </v-col>
     <v-dialog v-model="dialog" scrollable max-width="80%">
       <v-card>
         <v-card-title>{{ title }}</v-card-title>
@@ -43,7 +42,7 @@ export default {
     return {
       dialog: false,
       amount: 0,
-      amounts: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      amounts: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     }
   }
 
