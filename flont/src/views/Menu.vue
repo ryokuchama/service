@@ -7,22 +7,26 @@
           <Cards :section-items="foodItems">
           </Cards>
       </v-col>
+    </v-row>
+    <v-row>
         <v-col>
           <h2>Drink</h2>
           <Cards :section-items="drinkItems">
           </Cards>
         </v-col>
+    </v-row>
+    <v-row>
         <v-col>
           <h2>Desert</h2>
           <Cards :section-items="desertItems">
           </Cards>
       </v-col>
-      <v-col class="total">
+    </v-row>
+    <v-col class="total">
         <p>注文内容:</p>
         <p>合計金額:</P>
         <v-btn tag="v-btn" to="/TimeAndPlace">Step2: 受け取り場所と時間</v-btn>
       </v-col>
-    </v-row>
   </v-container>
 </v-app>
 </template>

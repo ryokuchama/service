@@ -4,7 +4,7 @@
       <h1><slot></slot></h1>
         <v-card class="mx-auto" @click.stop="dialog=true"
         v-for="(item, index) in sectionItems" :key="index"
-        max-width="500">
+        max-width="auto">
           <v-img
           src="item.photo">
             <v-card-title class="justify-center">
