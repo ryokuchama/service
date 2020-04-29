@@ -1,9 +1,9 @@
 <template>
-<div>
+<div class="card">
+  <div v-for="(item, index) in sectionItems" :key="index">
   <v-col>
       <h1><slot></slot></h1>
         <v-card class="mx-auto" @click.stop="dialog=true"
-        v-for="(item, index) in sectionItems" :key="index"
         max-width="auto">
           <v-img
           src="item.photo">
@@ -11,21 +11,25 @@
             {{ item.title }}
             </v-card-title>
           </v-img>          
-          <v-card-text>
-            {{ item.text }}
-          </v-card-text>
+          <v-card-subtitle align-center>
+            {{ item.price }}
+          </v-card-subtitle>
         </v-card>
   </v-col>
     <v-dialog v-model="dialog" scrollable max-width="80%">
       <v-card>
-        <v-card-title>{{ title }}</v-card-title>
+        <v-card-title>{{ item.title }}</v-card-title>
+        <v-card-subtitle align-center>
+            {{ item.price }}
+        </v-card-subtitle>
         <v-divider></v-divider>
-        <v-card-text height="200px">{{ content }}</v-card-text>
+        <v-card-text height="200px">{{ item.text }}</v-card-text>
 
         <v-select :items="amounts" label="数量" outlined>
         </v-select>
       </v-card>
-    </v-dialog>  
+    </v-dialog> 
+  </div>
   </div>
 </template>
 

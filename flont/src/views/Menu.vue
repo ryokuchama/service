@@ -78,41 +78,44 @@ import Cards from '@/components/Cards.vue'
       return {
         RecommendItems: [
           {
-            'title': 'チーズハンバーガー',
-            'text': '1000円'
+            'title': 'ポキ丼',
+            'price':1000,
+            'text': 'マグロとサーモンを特製のタレで和えました'
           }
         ],
         foodItems: [
           {
-            'title': 'チーズハンバーガー',
-            'text': '1000円'
+            'title': 'チーズバーガー',
+            'price':1000,
+            'text': '人気メニュー'
           },
           {
             'title': 'フライドポテト',
-            'text': '200円'
-          },
-          {
-            'title': 'フライドポテト',
-            'text': '200円'
+            'price':500,
+            'text': 'みんな大好き'
           }
         ],
         drinkItems: [
           {
             'title': 'ビール',
-            'text': '500円'
+            'price':500,
+            'text': 'お気に入り'
           },
           {
             'title': 'コーラ',
-            'text': '500円'
+            'price':500,
+            'text': 'アメリカン'
           }
         ],
         desertItems: [
           {
             'title': 'パフェ',
+            'price':'1000',
             'text': '500円'
           },
           {
             'title': 'チーズケーキ',
+            'price':'1000',
             'text': '300円'
           }
         ]
