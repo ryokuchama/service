@@ -3,28 +3,61 @@
   <v-container fluid>
     <v-row>
       <v-col class="card">
-          <h2>Food</h2>
-          <Cards :section-items="foodItems">
+        <v-expansion-panels>
+          <v-expansion-panel>
+          <v-expansion-panel-header>Recommends</v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <Cards :section-items="RecommendItems">
+              </Cards>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col class="card">
+        <v-expansion-panels>
+          <v-expansion-panel>
+          <v-expansion-panel-header>Food Menu</v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <Cards :section-items="foodItems">
+              </Cards>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col>
+        <v-expansion-panels>
+          <v-expansion-panel>
+          <v-expansion-panel-header>Drink Menu</v-expansion-panel-header>
+          <v-expansion-panel-content>
+          <Cards :section-items="drinkItems">
           </Cards>
+          </v-expansion-panel-content>
+          </v-expansion-panel>
+      </v-expansion-panels>
       </v-col>
     </v-row>
     <v-row>
         <v-col>
-          <h2>Drink</h2>
-          <Cards :section-items="drinkItems">
-          </Cards>
-        </v-col>
-    </v-row>
-    <v-row>
-        <v-col>
-          <h2>Desert</h2>
+          <v-expansion-panels>
+          <v-expansion-panel>
+          <v-expansion-panel-header>Desert Menu</v-expansion-panel-header>
+          <v-expansion-panel-content>
           <Cards :section-items="desertItems">
           </Cards>
+          </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
       </v-col>
     </v-row>
     <v-col class="total">
-        <p>注文内容:</p>
-        <p>合計金額:</P>
+      <p>
+        <span>注文内容:{{product}}</span>
+        <span>合計金額:{{price}}</span>
+      </p>
         <v-btn tag="v-btn" to="/TimeAndPlace">Step2: 受け取り場所と時間</v-btn>
       </v-col>
   </v-container>
@@ -43,6 +76,12 @@ import Cards from '@/components/Cards.vue'
 
     data () {
       return {
+        RecommendItems: [
+          {
+            'title': 'チーズハンバーガー',
+            'text': '1000円'
+          }
+        ],
         foodItems: [
           {
             'title': 'チーズハンバーガー',

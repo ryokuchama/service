@@ -1,5 +1,5 @@
 <template>
-<v-app>
+<div>
   <v-col>
       <h1><slot></slot></h1>
         <v-card class="mx-auto" @click.stop="dialog=true"
@@ -26,7 +26,7 @@
         </v-select>
       </v-card>
     </v-dialog>  
-  </v-app>
+  </div>
 </template>
 
 <script>
