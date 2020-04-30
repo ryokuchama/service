@@ -53,13 +53,15 @@
         </v-expansion-panels>
       </v-col>
     </v-row>
-    <v-col class="total">
+    <v-row>
+      <v-col class="total">
       <p>
         <span>注文内容:{{product}}</span>
         <span>合計金額:{{price}}</span>
       </p>
         <v-btn tag="v-btn" to="/TimeAndPlace">Step2: 受け取り場所と時間</v-btn>
       </v-col>
+    </v-row>
   </v-container>
 </v-app>
 </template>
@@ -104,7 +106,7 @@ import Cards from '@/components/Cards.vue'
           {
             'title': 'コーラ',
             'price':500,
-            'text': 'アメリカン'
+            'text': 'おすすめ'
           }
         ],
         desertItems: [
@@ -118,7 +120,9 @@ import Cards from '@/components/Cards.vue'
             'price':'1000',
             'text': '300円'
           }
-        ]
+        ],
+        products: [],
+        totalprice: []
       }
       
     },
