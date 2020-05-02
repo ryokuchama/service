@@ -27,7 +27,7 @@
 
         <v-select :items="amounts" label="数量" outlined>
         </v-select>
-        <v-btn>カートに追加</v-btn>
+        <v-btn @click="addCart(item.id)">カートに追加</v-btn>
       </v-card>
     </v-dialog> 
   </div>

@@ -55,11 +55,13 @@
     </v-row>
     <v-row>
       <v-col class="total">
-      <p>
-        <span>注文内容:{{product}}</span>
-        <span>合計金額:{{price}}</span>
-      </p>
-        <v-btn tag="v-btn" to="/TimeAndPlace">Step2: 受け取り場所と時間</v-btn>
+        <dir :section-items="products">
+          <p>
+            <span>注文内容:{{products}}</span>
+            <span>合計金額:{{price}}</span>
+          </p>
+            <v-btn tag="v-btn" to="/TimeAndPlace">Step2: 受け取り場所と時間</v-btn>
+        </dir>
       </v-col>
     </v-row>
   </v-container>
@@ -80,6 +82,7 @@ import Cards from '@/components/Cards.vue'
       return {
         RecommendItems: [
           {
+            'id': 1,
             'title': 'ポキ丼',
             'price':1000,
             'text': 'マグロとサーモンを特製のタレで和えました'
@@ -87,11 +90,13 @@ import Cards from '@/components/Cards.vue'
         ],
         foodItems: [
           {
+            'id': 1,
             'title': 'チーズバーガー',
             'price':1000,
             'text': '人気メニュー'
           },
           {
+            'id': 2,
             'title': 'フライドポテト',
             'price':500,
             'text': 'みんな大好き'
@@ -99,11 +104,13 @@ import Cards from '@/components/Cards.vue'
         ],
         drinkItems: [
           {
+            'id': 1,
             'title': 'ビール',
             'price':500,
             'text': 'お気に入り'
           },
           {
+            'id': 2,
             'title': 'コーラ',
             'price':500,
             'text': 'おすすめ'
@@ -111,11 +118,13 @@ import Cards from '@/components/Cards.vue'
         ],
         desertItems: [
           {
+            'id': 1,
             'title': 'パフェ',
             'price':'1000',
             'text': '500円'
           },
           {
+            'id': 2,
             'title': 'チーズケーキ',
             'price':'1000',
             'text': '300円'
@@ -124,9 +133,40 @@ import Cards from '@/components/Cards.vue'
         products: [],
         totalprice: []
       }
-      
     },
+    methods: {
+    addCart: function (id) {
+      var selectReco = this.RecommendItems.find((p) => {
+        (p.id === id);
+      });
+      this.products.push(selectReco)
+
+      var selectFood = this.foodItems.find((p) => {
+        (p.id === id);
+      });
+      this.products.push(selectFood)
+
+      var selectDrink = this.drinkItems.find((p) => {
+        (p.id === id);
+      });
+      this.products.push(selectDrink)
+
+      var selectDes = this.desertItems.find((p) => {
+        (p.id === id);
+      });
+      this.products.push(selectDes)
+    },
+
+    delCart: function (id) {
+      this.products.some (function(p, i) {
+        if (p.id === id) {
+          this.products.splice(i, 1)
+          return true
+        } 
+      });
+    }
   }
+}
 </script>
 
 <style scoped>
