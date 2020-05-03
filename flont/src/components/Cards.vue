@@ -1,7 +1,7 @@
 <template>
 <div class="card">
   <div v-for="(item, index) in sectionItems" :key="index">
-  <v-col>
+    <v-col>
       <h1><slot></slot></h1>
         <v-card class="mx-auto" @click.stop="dialog=true"
         max-width="auto">
@@ -14,23 +14,18 @@
           <v-card-subtitle align-center>
             {{ item.price }}
           </v-card-subtitle>
+          <v-layout justify-center>
+            <v-btn class="mx-2" fab dark small color="primary">
+              <v-icon dark>mdi-minus</v-icon>
+            </v-btn>
+            {{amount}}
+            <v-btn class="mx-2" fab dark small color="indigo">
+              <v-icon dark>mdi-plus</v-icon>
+            </v-btn>
+          </v-layout>
         </v-card>
-  </v-col>
-    <v-dialog v-model="dialog" scrollable max-width="80%">
-      <v-card>
-        <v-card-title>{{ item.title }}</v-card-title>
-        <v-card-subtitle align-center>
-            {{ item.price }}
-        </v-card-subtitle>
-        <v-divider></v-divider>
-        <v-card-text height="200px">{{ item.text }}</v-card-text>
-
-        <v-select :items="amounts" label="数量" outlined>
-        </v-select>
-        <v-btn @click="addCart(item.id)">カートに追加</v-btn>
-      </v-card>
-    </v-dialog> 
-  </div>
+      </v-col> 
+    </div>
   </div>
 </template>
 
@@ -48,8 +43,16 @@ export default {
       dialog: false,
       amount: 0,
       amounts: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      cart: []
     }
+  },
+  methods: {
+    addCart: function (id) {
+      var selected = this.sectionItems.find((item) => {
+        (item.id === id);
+      });
+      this.cart.push(selected)
+    },
   }
-
 }
 </script>
