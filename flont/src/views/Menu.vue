@@ -133,39 +133,7 @@ import Cards from '@/components/Cards.vue'
         products: [],
         totalprice: []
       }
-    },
-    methods: {
-    addCart: function (id) {
-      var selectReco = this.RecommendItems.find((p) => {
-        (p.id === id);
-      });
-      this.products.push(selectReco)
-
-      var selectFood = this.foodItems.find((p) => {
-        (p.id === id);
-      });
-      this.products.push(selectFood)
-
-      var selectDrink = this.drinkItems.find((p) => {
-        (p.id === id);
-      });
-      this.products.push(selectDrink)
-
-      var selectDes = this.desertItems.find((p) => {
-        (p.id === id);
-      });
-      this.products.push(selectDes)
-    },
-
-    delCart: function (id) {
-      this.products.some (function(p, i) {
-        if (p.id === id) {
-          this.products.splice(i, 1)
-          return true
-        } 
-      });
     }
-  }
 }
 </script>
 

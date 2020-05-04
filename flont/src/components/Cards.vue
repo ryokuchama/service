@@ -3,23 +3,27 @@
   <div v-for="(item, index) in sectionItems" :key="index">
     <v-col>
       <h1><slot></slot></h1>
-        <v-card class="mx-auto" @click.stop="dialog=true"
-        max-width="auto">
+        <v-card class="mx-auto" max-width="auto">
           <v-img
           src="item.photo">
             <v-card-title class="justify-center">
-            {{ item.title }}
+              {{ item.title }}
             </v-card-title>
-          </v-img>          
-          <v-card-subtitle align-center>
-            {{ item.price }}
-          </v-card-subtitle>
-          <v-layout justify-center>
-            <v-btn class="mx-2" fab dark small color="primary">
+            <v-card-subtitle class="text-center">
+              {{ item.price }}
+            </v-card-subtitle>
+          </v-img>
+          <v-divider></v-divider>          
+          <v-layout justify-center align-center >
+            <v-btn
+            class="mx-2" fab dark small color="primary"
+            @click="addCart(p.id)">
               <v-icon dark>mdi-minus</v-icon>
             </v-btn>
             {{amount}}
-            <v-btn class="mx-2" fab dark small color="indigo">
+            <v-btn
+            class="mx-2" fab dark small color="indigo"
+            @click="delCart(p.id)">
               <v-icon dark>mdi-plus</v-icon>
             </v-btn>
           </v-layout>
@@ -40,9 +44,6 @@ export default {
   },
   data () {
     return {
-      dialog: false,
-      amount: 0,
-      amounts: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       cart: []
     }
   },
@@ -53,6 +54,29 @@ export default {
       });
       this.cart.push(selected)
     },
+    delCart: function (id) {
+      this.products.some (function(p, i) {
+        if (p.id === id) {
+          this.products.splice(i, 1)
+          return true
+        } 
+      });
+    },
+    amount : function(productId) {
+      filtered = this.cart.filter(function(p) {
+        return (p.id == productId);
+      });
+      return filtered.length
+    },
+  },
+  computed: {
+    total: function () {
+      count = {}
+      this.cart.forEach(function(item) {
+        count[item.id] = (count[item.id])? count[item.id] + 1 : 1 ;
+      });
+      return count
+    }
   }
 }
 </script>
