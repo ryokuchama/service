@@ -17,13 +17,13 @@
           <v-layout justify-center align-center >
             <v-btn
             class="mx-2" fab dark small color="primary"
-            @click="addCart(p.id)">
+            @click="addCart(item.id)">
               <v-icon dark>mdi-minus</v-icon>
             </v-btn>
-            {{amount}}
+            {{amount(item.id)}}
             <v-btn
             class="mx-2" fab dark small color="indigo"
-            @click="delCart(p.id)">
+            @click="delCart(item.id)">
               <v-icon dark>mdi-plus</v-icon>
             </v-btn>
           </v-layout>
@@ -63,7 +63,7 @@ export default {
       });
     },
     amount : function(productId) {
-      filtered = this.cart.filter(function(p) {
+      let filtered = this.cart.filter(function(p) {
         return (p.id == productId);
       });
       return filtered.length
@@ -71,7 +71,7 @@ export default {
   },
   computed: {
     total: function () {
-      count = {}
+      let count = {}
       this.cart.forEach(function(item) {
         count[item.id] = (count[item.id])? count[item.id] + 1 : 1 ;
       });
