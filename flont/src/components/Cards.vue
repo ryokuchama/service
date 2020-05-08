@@ -13,8 +13,11 @@
               {{ item.price }}
             </v-card-subtitle>
           </v-img>
-          <v-divider></v-divider>          
-          <v-layout justify-center align-center >
+          <v-divider></v-divider>
+          <v-card-text class="text-center">
+            {{item.text}}
+          </v-card-text>     
+          <v-layout justify-center align-center>
             <v-btn
             class="mx-2" fab dark small color="primary"
             @click="addCart(item.id)">
@@ -70,13 +73,26 @@ export default {
     },
   },
   computed: {
+    totalCountInthecart: function () {
+      return this.cart.length
+    },
+    cartHasProducts: function() {
+      return (this.cart.length === 0) ? false: true;
+    },
     total: function () {
       let count = {}
       this.cart.forEach(function(item) {
         count[item.id] = (count[item.id])? count[item.id] + 1 : 1 ;
       });
       return count
+    },
+    totalprice: function () {
+      let total = this.cart.reduce((sum, x) => sum + x.price, 0)
+      return total
     }
-  }
+  },
+  mounted() {
+      this.$emit('totalmethod', this.total)
+  },
 }
 </script>

@@ -54,11 +54,12 @@
       </v-col>
     </v-row>
     <v-row>
+      <Cards @totalmethod = "total"></Cards>
       <v-col class="total">
         <dir :section-items="products">
           <p>
             <span>注文内容:{{products}}</span>
-            <span>合計金額:{{price}}</span>
+            <span>合計金額:{{totalprice}}</span>
           </p>
             <v-btn tag="v-btn" to="/TimeAndPlace">Step2: 受け取り場所と時間</v-btn>
         </dir>
@@ -90,13 +91,13 @@ import Cards from '@/components/Cards.vue'
         ],
         foodItems: [
           {
-            'id': 1,
+            'id': 2,
             'title': 'チーズバーガー',
             'price':1000,
             'text': '人気メニュー'
           },
           {
-            'id': 2,
+            'id': 3,
             'title': 'フライドポテト',
             'price':500,
             'text': 'みんな大好き'
@@ -104,13 +105,13 @@ import Cards from '@/components/Cards.vue'
         ],
         drinkItems: [
           {
-            'id': 1,
+            'id': 4,
             'title': 'ビール',
             'price':500,
             'text': 'お気に入り'
           },
           {
-            'id': 2,
+            'id': 5,
             'title': 'コーラ',
             'price':500,
             'text': 'おすすめ'
@@ -118,20 +119,25 @@ import Cards from '@/components/Cards.vue'
         ],
         desertItems: [
           {
-            'id': 1,
+            'id': 6,
             'title': 'パフェ',
             'price':'1000',
-            'text': '500円'
+            'text': '人気'
           },
           {
-            'id': 2,
+            'id': 7,
             'title': 'チーズケーキ',
             'price':'1000',
-            'text': '300円'
+            'text': '美味しい'
           }
         ],
-        products: [],
-        totalprice: []
+        products: "",
+        totalprice: Number
+      }
+    },
+    methods: {
+      total(totalprice) {
+        this.totalprice = totalprice
       }
     }
 }
