@@ -66,11 +66,14 @@ export default {
       });
     },
     amount : function(productId) {
-      let filtered = this.cart.filter(function(p) {
+      var filtered = this.cart.filter(function(p) {
         return (p.id == productId);
       });
       return filtered.length
     },
+    orderd() {
+      
+    }
   },
   computed: {
     totalCountInthecart: function () {
@@ -80,14 +83,14 @@ export default {
       return (this.cart.length === 0) ? false: true;
     },
     total: function () {
-      let count = {}
+      var count = {}
       this.cart.forEach(function(item) {
         count[item.id] = (count[item.id])? count[item.id] + 1 : 1 ;
       });
       return count
     },
     totalprice: function () {
-      let total = this.cart.reduce((sum, x) => sum + x.price, 0)
+      var total = this.cart.reduce((sum, x) => sum + x.price, 0)
       return total
     }
   },

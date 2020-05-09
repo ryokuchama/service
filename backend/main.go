@@ -1,5 +1,11 @@
 package main
 
+import "database/sql"
 import "github.com/gin-gonic/gin"
+import "github.com/go-sql-driver/mysql"
+import "fmt"
 
-import "net/http"
+func main() {
+	r := gin.Default()
+	r.GET("")
+}
