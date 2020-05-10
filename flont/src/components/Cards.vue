@@ -76,26 +76,10 @@ export default {
     }
   },
   computed: {
-    totalCountInthecart: function () {
-      return this.cart.length
+    
     },
-    cartHasProducts: function() {
-      return (this.cart.length === 0) ? false: true;
-    },
-    total: function () {
-      var count = {}
-      this.cart.forEach(function(item) {
-        count[item.id] = (count[item.id])? count[item.id] + 1 : 1 ;
-      });
-      return count
-    },
-    totalprice: function () {
-      var total = this.cart.reduce((sum, x) => sum + x.price, 0)
-      return total
-    }
-  },
   mounted() {
-      this.$emit('totalmethod', this.total)
+      this.$emit('totalmethod', this.cart)
   },
 }
 </script>
