@@ -133,6 +133,8 @@ import Cards from '@/components/Cards.vue'
         ],
         products: "",
         totalprice: Number
+
+        // v-stepperの追加
       }
     },
     methods: {

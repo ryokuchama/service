@@ -1,6 +1,6 @@
 <template>
 <div class="card">
-  <div v-for="(item, index) in sectionItems" :key="index">
+  <div v-for="item in sectionItems" :key="item.id">
     <v-col>
       <h1><slot></slot></h1>
         <v-card class="mx-auto" max-width="auto">
@@ -20,7 +20,7 @@
           <v-layout justify-center align-center>
             <v-btn
             class="mx-2" fab dark small color="primary"
-            @click="addCart(item.id)">
+            @click="addToCart(item.id)">
               <v-icon dark>mdi-minus</v-icon>
             </v-btn>
             {{amount(item.id)}}
@@ -51,16 +51,16 @@ export default {
     }
   },
   methods: {
-    addCart: function (id) {
-      var selected = this.sectionItems.find((item) => {
-        (item.id === id);
+    addToCart: function (id) {
+      var selectedProdct = this.sectionItems.find((item) => {
+        return (item.id === id);
       });
-      this.cart.push(selected)
+      this.cart.push(selectedProdct)
     },
     delCart: function (id) {
-      this.products.some (function(p, i) {
+      this.cart.some (function(p, i) {
         if (p.id === id) {
-          this.products.splice(i, 1)
+          this.cart.splice(i, 1)
           return true
         } 
       });
