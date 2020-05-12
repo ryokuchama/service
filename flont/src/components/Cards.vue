@@ -21,13 +21,13 @@
             <v-btn
             class="mx-2" fab dark small color="primary"
             @click="addToCart(item.id)">
-              <v-icon dark>mdi-minus</v-icon>
+              <v-icon dark>mdi-plus</v-icon>
             </v-btn>
             {{amount(item.id)}}
             <v-btn
             class="mx-2" fab dark small color="indigo"
-            @click="delCart(item.id)">
-              <v-icon dark>mdi-plus</v-icon>
+            @click="delFromCart(item.id)">
+              <v-icon dark>mdi-minus</v-icon>
             </v-btn>
           </v-layout>
         </v-card>
@@ -57,7 +57,7 @@ export default {
       });
       this.cart.push(selectedProdct)
     },
-    delCart: function (id) {
+    delFromCart: function (id) {
       this.cart.some (function(p, i) {
         if (p.id === id) {
           this.cart.splice(i, 1)
