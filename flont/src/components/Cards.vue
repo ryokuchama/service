@@ -58,12 +58,8 @@ export default {
       this.cart.push(selectedProdct)
     },
     delFromCart: function (id) {
-      this.cart.some (function(p, i) {
-        if (p.id === id) {
-          this.cart.splice(i, 1)
-          return true
-        } 
-      });
+      var deleteItem = this.cart.indexOf(id);
+      this.cart.splice(deleteItem, 1);
     },
     amount : function(productId) {
       var filtered = this.cart.filter(function(p) {
