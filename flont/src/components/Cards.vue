@@ -72,7 +72,14 @@ export default {
     }
   },
   computed: {
-    
+    productCountById: function () {
+      var count = {}
+      this.cart.forEach(function(item) {
+        count[item.id] = (count[item.id])? count[item.id] + 1 : 1 ;
+      });
+      console.log(count);
+      return count
+    },
     },
   mounted() {
       this.$emit('totalmethod', this.cart)
