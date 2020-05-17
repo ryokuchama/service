@@ -47,7 +47,8 @@ export default {
   },
   data () {
     return {
-      cart: []
+      cart: [],
+      computedCart: []
     }
   },
   methods: {
@@ -80,7 +81,11 @@ export default {
       console.log(count);
       return count
     },
-    },
+    totalPrice: function () {
+      var total = 100;
+      return total
+    }
+  },
   mounted() {
       this.$emit('totalmethod', this.cart)
   },
