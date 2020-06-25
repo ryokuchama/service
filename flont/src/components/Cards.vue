@@ -82,7 +82,9 @@ export default {
       return count
     },
     totalPrice: function () {
-      var total = 100;
+      var total = this.cart.reduce(
+        (sum, x) => sum + x.price, 0
+        )
       return total
     }
   },

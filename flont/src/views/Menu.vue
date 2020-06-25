@@ -58,8 +58,10 @@
       <v-col class="total">
         <dir :section-items="products">
           <p>
-            <span>注文内容:{{products}}</span>
-            <span>合計金額:{{totalprice}}</span>
+            注文内容:{{products}}
+          </p>
+          <p>
+            合計金額:{{totalprice}}
           </p>
             <v-btn tag="v-btn" to="/TimeAndPlace">Step2: 受け取り場所と時間</v-btn>
         </dir>
@@ -132,17 +134,22 @@ import Cards from '@/components/Cards.vue'
           }
         ],
         products: "",
-        totalprice: Number
+        totalprice: Number,
 
         // v-stepperの追加
         // Card.vueの廃止とこちら側で全ての実装
       }
     },
+
+    props: {
+      cart: []
+    },
+
     methods: {
       total(totalprice) {
         this.totalprice = totalprice
       }
-    }
+    },
 }
 </script>
 

@@ -1,23 +1,18 @@
 <template>
 <v-app>
     <v-container fluid>
-    <h2>受取方法</h2>
-    <v-radio-group v-model="radios" :mandatory=true>
-      <v-radio label="テイクアウト" value=0></v-radio>
-      <v-radio label="デリバリー" value=1></v-radio>
-      <small>※デリバリーは大須、上前津、伏見に限ります。</small>
-    </v-radio-group>
-    <div class="delivery" v-show="this.radios == 1">
-      <h2>受け取り場所</h2>
+    <h2>ご連絡先</h2>
+    <div class="delivery">
       <v-text-field
             v-model="adress"
-            :rules="nameRules"
-            label="受け取り場所を記入してください"
-            required
+            :rules="rules"
+            counter="11"
+            hide-details="auto"
+            label="電話番号を入力してください(ハイフンなし)"
           ></v-text-field>
     </div>
     <div class="time">
-      <h2>受け取り/宅配時刻</h2>
+      <h2>受け取り時刻</h2>
       <v-select
       :items = "hours"
       label="時"
@@ -41,7 +36,6 @@
 export default {
     data() {
       return{
-        radios: 0,
         minutes: [0, 10, 20, 30, 40, 50],
         hours: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
       }
