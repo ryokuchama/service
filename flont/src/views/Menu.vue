@@ -136,15 +136,13 @@ import Cards from '@/components/Cards.vue'
         products: "",
         totalprice: Number,
 
+        
+
         // v-stepperの追加
         // Card.vueの廃止とこちら側で全ての実装
       }
     },
-
-    props: {
-      cart: []
-    },
-
+    
     methods: {
       total(totalprice) {
         this.totalprice = totalprice
