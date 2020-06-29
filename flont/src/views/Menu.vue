@@ -1,56 +1,37 @@
 <template>
 <v-app>
   <v-container fluid>
-    <v-row>
-      <v-col class="card">
-        <v-expansion-panels>
-          <v-expansion-panel>
-          <v-expansion-panel-header>Recommends</v-expansion-panel-header>
-            <v-expansion-panel-content>
-              <Cards :section-items="RecommendItems">
-              </Cards>
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-        </v-expansion-panels>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col class="card">
-        <v-expansion-panels>
-          <v-expansion-panel>
-          <v-expansion-panel-header>Food Menu</v-expansion-panel-header>
-            <v-expansion-panel-content>
-              <Cards :section-items="foodItems">
-              </Cards>
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-        </v-expansion-panels>
-      </v-col>
-    </v-row>
-    <v-row>
+    <v-row v-for="item in Items" :key="item.id">
       <v-col>
-        <v-expansion-panels>
-          <v-expansion-panel>
-          <v-expansion-panel-header>Drink Menu</v-expansion-panel-header>
-          <v-expansion-panel-content>
-          <Cards :section-items="drinkItems">
-          </Cards>
-          </v-expansion-panel-content>
-          </v-expansion-panel>
-      </v-expansion-panels>
-      </v-col>
-    </v-row>
-    <v-row>
-        <v-col>
-          <v-expansion-panels>
-          <v-expansion-panel>
-          <v-expansion-panel-header>Desert Menu</v-expansion-panel-header>
-          <v-expansion-panel-content>
-          <Cards :section-items="desertItems">
-          </Cards>
-          </v-expansion-panel-content>
-          </v-expansion-panel>
-        </v-expansion-panels>
+        <h1><slot></slot></h1>
+        <v-card class="mx-auto" max-width="auto">
+          <v-img
+          src="item.photo">
+            <v-card-title class="justify-center">
+              {{ item.title }}
+            </v-card-title>
+            <v-card-subtitle class="text-center">
+              {{ item.price }}
+            </v-card-subtitle>
+          </v-img>
+          <v-divider></v-divider>
+          <v-card-text class="text-center">
+            {{item.text}}
+          </v-card-text>     
+          <v-layout justify-center align-center>
+            <v-btn
+            class="mx-2" fab dark small color="primary"
+            @click="addToCart(item.id)">
+              <v-icon dark>mdi-plus</v-icon>
+            </v-btn>
+            {{amount(item.id)}}
+            <v-btn
+            class="mx-2" fab dark small color="indigo"
+            @click="delFromCart(item.id)">
+              <v-icon dark>mdi-minus</v-icon>
+            </v-btn>
+          </v-layout>
+        </v-card>
       </v-col>
     </v-row>
     <v-row>
@@ -83,15 +64,13 @@ import Cards from '@/components/Cards.vue'
 
     data () {
       return {
-        RecommendItems: [
+        Items: [
           {
             'id': 1,
             'title': 'ポキ丼',
             'price':1000,
             'text': 'マグロとサーモンを特製のタレで和えました'
-          }
-        ],
-        foodItems: [
+          },
           {
             'id': 2,
             'title': 'チーズバーガー',
@@ -103,9 +82,7 @@ import Cards from '@/components/Cards.vue'
             'title': 'フライドポテト',
             'price':500,
             'text': 'みんな大好き'
-          }
-        ],
-        drinkItems: [
+          },
           {
             'id': 4,
             'title': 'ビール',
@@ -117,9 +94,7 @@ import Cards from '@/components/Cards.vue'
             'title': 'コーラ',
             'price':500,
             'text': 'おすすめ'
-          }
-        ],
-        desertItems: [
+          },
           {
             'id': 6,
             'title': 'パフェ',
