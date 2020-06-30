@@ -1,10 +1,11 @@
 <template>
 <v-app>
   <v-container fluid>
-    <v-row v-for="item in Items" :key="item.id">
+    <v-row>
       <v-col>
         <h1><slot></slot></h1>
-        <v-card class="mx-auto" max-width="auto">
+        <v-card class="mx-auto" max-width="auto"
+        v-for="item in Items" :key="item.id">
           <v-img
           src="item.photo">
             <v-card-title class="justify-center">
@@ -35,12 +36,13 @@
       </v-col>
     </v-row>
     <v-row>
-      <Cards @totalmethod = "total"></Cards>
       <v-col class="total">
-        <dir :section-items="products">
+        <dir v-for="c in cart" :key="c">
           <p>
-            注文内容:{{products}}
+            注文内容:{{c.title}}
           </p>
+        </dir>
+        <dir>
           <p>
             合計金額:{{totalprice}}
           </p>
@@ -53,17 +55,13 @@
 </template>
 
 <script>
-import Cards from '@/components/Cards.vue'
 
   export default {
-    components: {
-      Cards
-    },
-
     name: 'Menu',
 
     data () {
       return {
+        cart: [],
         Items: [
           {
             'id': 1,
@@ -117,12 +115,40 @@ import Cards from '@/components/Cards.vue'
         // Card.vueの廃止とこちら側で全ての実装
       }
     },
-    
     methods: {
-      total(totalprice) {
-        this.totalprice = totalprice
-      }
+    addToCart: function (id) {
+      var selectedProdct = this.Items.find((item) => {
+        return (item.id === id);
+      });
+      this.cart.push(selectedProdct)
     },
+    delFromCart: function (id) {
+      var deleteItem = this.cart.indexOf(id);
+      this.cart.splice(deleteItem, 1);
+    },
+    amount : function(productId) {
+      var filtered = this.cart.filter(function(p) {
+        return (p.id == productId);
+      });
+      return filtered.length
+    }
+  },
+  computed: {
+    productCountById: function () {
+      var count = {}
+      this.cart.forEach(function(item) {
+        count[item.id] = (count[item.id])? count[item.id] + 1 : 1 ;
+      });
+      console.log(count);
+      return count
+    },
+    totalPrice: function () {
+      var total = this.cart.reduce(
+        (sum, x) => sum + x.price, 0
+        )
+      return total
+    }
+  },
 }
 </script>
 
