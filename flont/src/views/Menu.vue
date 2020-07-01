@@ -37,14 +37,15 @@
     </v-row>
     <v-row>
       <v-col class="total">
+        注文内容: 
         <dir v-for="c in cart" :key="c">
           <p>
-            注文内容:{{c.title}}
+            {{c.title}}
           </p>
         </dir>
         <dir>
           <p>
-            合計金額:{{totalprice}}
+            合計金額:{{totalPrice}}
           </p>
             <v-btn tag="v-btn" to="/TimeAndPlace">Step2: 受け取り場所と時間</v-btn>
         </dir>
