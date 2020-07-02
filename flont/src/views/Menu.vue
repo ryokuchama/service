@@ -1,9 +1,8 @@
 <template>
 <v-app>
-  <v-container fluid>
+  <v-container>
     <v-row>
       <v-col>
-        <h1><slot></slot></h1>
         <v-card class="mx-auto" max-width="auto"
         v-for="item in Items" :key="item.id">
           <v-img
@@ -32,6 +31,7 @@
               <v-icon dark>mdi-minus</v-icon>
             </v-btn>
           </v-layout>
+          <span></span>
         </v-card>
       </v-col>
     </v-row>
@@ -97,13 +97,13 @@
           {
             'id': 6,
             'title': 'パフェ',
-            'price':'1000',
+            'price':1000,
             'text': '人気'
           },
           {
             'id': 7,
             'title': 'チーズケーキ',
-            'price':'1000',
+            'price':1000,
             'text': '美味しい'
           }
         ],
@@ -132,6 +132,17 @@
         return (p.id == productId);
       });
       return filtered.length
+    },
+    checkCart() {
+      var countForCheck = []
+      for (id in this.productCountById) {
+        this.Items.find(function(item) {
+          if(item.id == id) {
+            item["count"] = this.productCountById[id]
+            countForCheck.push(item)
+          }
+        })
+      }
     }
   },
   computed: {
