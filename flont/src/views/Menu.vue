@@ -65,28 +65,28 @@
         cart: [],
         Items: [
           {
-            'id': 1,
-            'title': 'ポキ丼',
-            'price':1000,
-            'text': 'マグロとサーモンを特製のタレで和えました'
+            id: 1,
+            title: 'ポキ丼',
+            price: 1000,
+            text: 'マグロとサーモンを特製のタレで和えました'
           },
           {
-            'id': 2,
-            'title': 'チーズバーガー',
-            'price':1000,
-            'text': '人気メニュー'
+            id: 2,
+            title: 'チーズバーガー',
+            price: 1000,
+            text: '人気メニュー'
           },
           {
-            'id': 3,
-            'title': 'フライドポテト',
-            'price':500,
-            'text': 'みんな大好き'
+            id: 3,
+            title: 'フライドポテト',
+            price: 500,
+            text: 'みんな大好き'
           },
           {
-            'id': 4,
-            'title': 'ビール',
-            'price':500,
-            'text': 'お気に入り'
+            id: 4,
+            title: 'ビール',
+            price: 500,
+            text: 'お気に入り'
           },
           {
             'id': 5,
@@ -95,16 +95,16 @@
             'text': 'おすすめ'
           },
           {
-            'id': 6,
-            'title': 'パフェ',
-            'price':1000,
-            'text': '人気'
+            id: 6,
+            title: 'パフェ',
+            price: 1000,
+            text: '人気'
           },
           {
-            'id': 7,
-            'title': 'チーズケーキ',
-            'price':1000,
-            'text': '美味しい'
+            id: 7,
+            title: 'チーズケーキ',
+            price: 1000,
+            text: '美味しい'
           }
         ],
         products: "",
@@ -135,7 +135,7 @@
     },
     checkCart() {
       var countForCheck = []
-      for (id in this.productCountById) {
+      for (let id in this.productCountById) {
         this.Items.find(function(item) {
           if(item.id == id) {
             item["count"] = this.productCountById[id]
