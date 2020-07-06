@@ -3,10 +3,10 @@
   <v-container>
     <v-row>
       <v-col>
-        <v-card class="mx-auto" max-width="auto"
+        <v-card class="mx-auto" max-width="auto" height="300"
         v-for="item in Items" :key="item.id">
           <v-img
-          src="item.photo">
+          src="item.photo" height="200">
             <v-card-title class="justify-center">
               {{ item.title }}
             </v-card-title>
@@ -31,18 +31,20 @@
               <v-icon dark>mdi-minus</v-icon>
             </v-btn>
           </v-layout>
-          <span></span>
         </v-card>
       </v-col>
     </v-row>
     <v-row>
       <v-col class="total">
-        注文内容: 
-        <dir v-for="c in cart" :key="c">
-          <p>
-            {{c.title}}
-          </p>
-        </dir>
+        <v-btn @click.stop="dialog=true">注文内容を確認</v-btn>
+        <v-dialog
+          v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
+          <v-card>
+            <v-card-title class="headline text-center">
+              注文内容
+            </v-card-title>
+          </v-card>
+        </v-dialog>
         <dir>
           <p>
             合計金額:{{totalPrice}}
@@ -63,6 +65,8 @@
     data () {
       return {
         cart: [],
+        computedCart: [],
+        dialog: false,
         Items: [
           {
             id: 1,
@@ -108,9 +112,7 @@
           }
         ],
         products: "",
-        totalprice: Number,
-
-        
+        totalprice: Number,      
 
         // v-stepperの追加
         // Card.vueの廃止とこちら側で全ての実装
@@ -143,6 +145,8 @@
           }
         })
       }
+      this.computedCart = countForCheck
+      console.log(this.computedCart)
     }
   },
   computed: {
