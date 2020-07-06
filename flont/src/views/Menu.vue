@@ -36,23 +36,25 @@
     </v-row>
     <v-row>
       <v-col class="total">
-        <v-btn @click.stop="dialog=true">注文内容を確認</v-btn>
         <v-dialog
           v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
           <v-card>
-            <v-card-title class="headline text-center">
-              注文内容
-            </v-card-title>
+            <v-toolbar dark color="primary">
+              <v-btn @click="dialog = false">
+                <v-icon>mdi-close</v-icon>
+              </v-btn>
+              <v-toolbar-title>注文内容と合計金額</v-toolbar-title>
+            </v-toolbar>
+            合計金額:{{totalPrice}}
+            <v-btn tag="v-btn" to="/TimeAndPlace" class="justify-center">Step2: 受け取り場所と時間</v-btn>
           </v-card>
         </v-dialog>
-        <dir>
-          <p>
-            合計金額:{{totalPrice}}
-          </p>
-            <v-btn tag="v-btn" to="/TimeAndPlace">Step2: 受け取り場所と時間</v-btn>
-        </dir>
       </v-col>
     </v-row>
+    <v-footer fixed color="primary">
+      <v-btn absolute left @click.stop="dialog=true" width="250">注文内容を確認</v-btn>
+      <v-btn absolute right tag="v-btn" to="/TimeAndPlace" width="250" class="align-right">Step2: 受け取り場所と時間</v-btn>
+    </v-footer>
   </v-container>
 </v-app>
 </template>

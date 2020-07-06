@@ -24,10 +24,10 @@
       outlined>
       </v-select>
     </div>
-    <div class="ma-1">
+    <v-footer class="ma-1" color="primary" fixed>
       <v-btn tag="v-btn" to="/">←メニューを選び直す</v-btn>
       <v-btn tag="v-btn" to="/Check">Step3: 注文内容確認→</v-btn>
-    </div>
+    </v-footer>
   </v-container>
 </v-app>
 </template>
