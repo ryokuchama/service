@@ -35,25 +35,33 @@
       </v-col>
     </v-row>
     <v-row>
+      <!--dialog-->
       <v-col class="total">
         <v-dialog
           v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
-          <v-card>
-            <v-toolbar dark color="primary">
-              <v-btn @click="dialog = false">
-                <v-icon>mdi-close</v-icon>
-              </v-btn>
-              <v-toolbar-title>注文内容と合計金額</v-toolbar-title>
-            </v-toolbar>
+          <v-toolbar dark color="primary">
+            <v-btn @click="dialog = false">
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+            <v-toolbar-title class="text-center">注文内容と合計金額</v-toolbar-title>
+            <v-spacer></v-spacer>
             合計金額:{{totalPrice}}
-            <v-btn tag="v-btn" to="/TimeAndPlace" class="justify-center">Step2: 受け取り場所と時間</v-btn>
-          </v-card>
+          </v-toolbar>
+          <v-row>
+            <v-col>
+              <v-card class="mx-auto" v-for="c in computedCart" :key="c.id">
+                {{c.title}}
+              </v-card>
+            </v-col>
+            <v-btn block tag="v-btn" to="/TimeAndPlace">Step2: 受け取り場所と時間</v-btn>
+          </v-row>
         </v-dialog>
       </v-col>
     </v-row>
     <v-footer fixed color="primary">
-      <v-btn absolute left @click.stop="dialog=true" width="250">注文内容を確認</v-btn>
-      <v-btn absolute right tag="v-btn" to="/TimeAndPlace" width="250" class="align-right">Step2: 受け取り場所と時間</v-btn>
+      <v-btn @click.stop="dialog=true" width="250">注文内容を確認</v-btn>
+      <v-spacer></v-spacer>
+      <v-btn tag="v-btn" to="/TimeAndPlace" width="250">Step2: 受け取り場所と時間</v-btn>
     </v-footer>
   </v-container>
 </v-app>
