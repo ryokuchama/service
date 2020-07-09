@@ -23,6 +23,12 @@
       label="分"
       outlined>
       </v-select>
+      <v-text-field
+            v-model="adress"
+            :rules="rules"
+            hide-details="auto"
+            label="苦手な食べ物やその他ご要望がございましたらご記入ください。"
+          ></v-text-field>
     </div>
     <v-footer class="ma-1" color="primary" fixed>
       <v-btn tag="v-btn" to="/">←メニューを選び直す</v-btn>

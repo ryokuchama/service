@@ -37,28 +37,32 @@
     <!--dialog-->
     <v-dialog
       v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
-      <v-toolbar dark color="primary">
-        <v-btn @click="dialog = false">
-          <v-icon>mdi-close</v-icon>
-        </v-btn>
-        <v-toolbar-title class="text-center">注文内容と合計金額</v-toolbar-title>
-        <v-spacer></v-spacer>
-        合計金額:{{totalPrice}}
-      </v-toolbar>
-      <v-list flat>
-        <v-list-item-group class="mx-auto" v-model="computed">
-          <v-list-item v-for="(computed, c) in computedCart" :key="c.id">
+      <v-card>
+        <v-toolbar dark color="primary">
+          <v-btn @click="dialog = false">
+            <v-icon>mdi-close</v-icon>
+          </v-btn>
+          <v-toolbar-title class="text-center">注文内容と合計金額</v-toolbar-title>
+          <v-spacer></v-spacer>
+          合計金額:{{totalPrice}}
+        </v-toolbar>
+        <v-list flat>
+          <v-list-item v-for="c in computedCart" :key="c.id">
             <v-list-item-content>
-              <v-list-item-title v-text="computed.title">
+              <v-list-item-title v-text="c.title">
               </v-list-item-title>
+              <v-list-item-subtitle v-text="c.price">
+              </v-list-item-subtitle>
             </v-list-item-content>
-          </v-list-item>   
-        </v-list-item-group>
-        <v-btn block tag="v-btn" to="/TimeAndPlace">Step2: 受け取り場所と時間</v-btn>
-      </v-list>
+          </v-list-item>
+          <v-btn block tag="v-btn" to="/TimeAndPlace">Step2: 受け取り場所と時間</v-btn>
+        </v-list>
+      </v-card>
     </v-dialog>
     <v-footer fixed color="primary">
-      <v-btn @click.stop="dialog=true" width="250">注文内容を確認</v-btn>
+      <v-btn @click="checkCart" width="250">注文内容を確認</v-btn>
+      <v-spacer></v-spacer>
+      合計金額:{{totalPrice}}
       <v-spacer></v-spacer>
       <v-btn tag="v-btn" to="/TimeAndPlace" width="250">Step2: 受け取り場所と時間</v-btn>
     </v-footer>
@@ -103,10 +107,10 @@
             text: 'お気に入り'
           },
           {
-            'id': 5,
-            'title': 'コーラ',
-            'price':500,
-            'text': 'おすすめ'
+            id: 5,
+            title: 'コーラ',
+            price: 500,
+            text: 'おすすめ'
           },
           {
             id: 6,
@@ -121,7 +125,6 @@
             text: '美味しい'
           }
         ],
-        products: "",
         totalprice: Number,      
 
         // v-stepperの追加
@@ -146,10 +149,12 @@
       return filtered.length
     },
     checkCart() {
+      this.dialog = true
+
       var countForCheck = []
-      for (let id in this.productCountById) {
+      for (var id in this.productCountById) {
         this.Items.find(function(item) {
-          if(item.id == id) {
+          if(item.id === id) {
             item["count"] = this.productCountById[id]
             countForCheck.push(item)
           }
