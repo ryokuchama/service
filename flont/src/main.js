@@ -10,10 +10,10 @@ var store = {
   state: {
 
   },
-  containsOfCart(newValue) {
+  containsOfCart() {
 
   },
-  timeAndPhoneNumber(newTime) {
+  timeAndPhoneNumber() {
 
   }
 }
@@ -25,11 +25,11 @@ new Vue({
     }
   },
   methods: {
-    containsOfCart: function(newValue) {
+    containsOfCart: function() {
 
     },
-    timeAndPhoneNumber: function(newTime) {
-      
+    timeAndPhoneNumber: function() {
+
     }
   },
   router,

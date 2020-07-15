@@ -152,13 +152,13 @@
       this.dialog = true
 
       var countForCheck = []
-      for (var id in this.productCountById) {
+      for (let id in this.productCountById) {
         this.Items.find(function(item) {
           if(item.id === id) {
             item["count"] = this.productCountById[id]
             countForCheck.push(item)
           }
-        })
+        });
       }
       this.computedCart = countForCheck
       console.log(this.computedCart)
