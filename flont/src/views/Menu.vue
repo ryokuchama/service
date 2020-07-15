@@ -47,16 +47,18 @@
           合計金額:{{totalPrice}}
         </v-toolbar>
         <v-list flat>
-          <v-list-item v-for="c in computedCart" :key="c.id">
+          <v-list-item v-for="com in computedCart" :key="com">
             <v-list-item-content>
-              <v-list-item-title v-text="c.title">
+              <v-list-item-title v-text="com.title">
               </v-list-item-title>
-              <v-list-item-subtitle v-text="c.price">
-              </v-list-item-subtitle>
+              <v-list-item-sub-title v-text="com.count">
+              </v-list-item-sub-title>
+              <v-list-tile-sub-title v-text="com.price">    
+              </v-list-tile-sub-title>
             </v-list-item-content>
           </v-list-item>
-          <v-btn block tag="v-btn" to="/TimeAndPlace">Step2: 受け取り場所と時間</v-btn>
         </v-list>
+        <v-btn block tag="v-btn" to="/TimeAndPlace">Step2: 受け取り場所と時間</v-btn>
       </v-card>
     </v-dialog>
     <v-footer fixed color="primary">
@@ -154,7 +156,7 @@
       var countForCheck = []
       for (let id in this.productCountById) {
         this.Items.find(function(item) {
-          if(item.id === id) {
+          if(item.id == id) {
             item["count"] = this.productCountById[id]
             countForCheck.push(item)
           }
