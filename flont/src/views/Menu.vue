@@ -3,6 +3,9 @@
   <v-container>
     <v-row>
       <v-col>
+        <div class="debug" v-for="com in computedCart" :key="com">
+          注文内容{{com}}
+        </div>
         <v-card class="mx-auto" max-width="auto" height="300"
         v-for="item in Items" :key="item.id">
           <v-img
@@ -46,7 +49,7 @@
           <v-spacer></v-spacer>
           合計金額:{{totalPrice}}
         </v-toolbar>
-        <v-list flat>
+        <v-list three-line subheader>
           <v-list-item v-for="com in computedCart" :key="com">
             <v-list-item-content>
               <v-list-item-title v-text="com.title">
@@ -82,53 +85,17 @@
         cart: [],
         computedCart: [],
         dialog: false,
-        computed: 1,
+        com: 1,
         Items: [
-          {
-            id: 1,
-            title: 'ポキ丼',
-            price: 1000,
-            text: 'マグロとサーモンを特製のタレで和えました'
-          },
-          {
-            id: 2,
-            title: 'チーズバーガー',
-            price: 1000,
-            text: '人気メニュー'
-          },
-          {
-            id: 3,
-            title: 'フライドポテト',
-            price: 500,
-            text: 'みんな大好き'
-          },
-          {
-            id: 4,
-            title: 'ビール',
-            price: 500,
-            text: 'お気に入り'
-          },
-          {
-            id: 5,
-            title: 'コーラ',
-            price: 500,
-            text: 'おすすめ'
-          },
-          {
-            id: 6,
-            title: 'パフェ',
-            price: 1000,
-            text: '人気'
-          },
-          {
-            id: 7,
-            title: 'チーズケーキ',
-            price: 1000,
-            text: '美味しい'
-          }
+          { id: 1, title: 'ポキ丼', price: 1000, text: 'マグロとサーモンを特製のタレで和えました' },
+          { id: 2, title: 'チーズバーガー', price: 1000, text: '人気メニュー' },
+          { id: 3, title: 'フライドポテト', price: 500, text: 'みんな大好き' },
+          { id: 4, title: 'ビール', price: 500, text: 'お気に入り' },
+          { id: 5, title: 'コーラ', price: 500, text: 'おすすめ' },
+          { id: 6, title: 'パフェ', price: 1000, text: '人気' },
+          { id: 7, title: 'チーズケーキ', price: 1000, text: '美味しい' }
         ],
         totalprice: Number,      
-
         // v-stepperの追加
         // Card.vueの廃止とこちら側で全ての実装
       }
@@ -156,7 +123,7 @@
       var countForCheck = []
       for (let id in this.productCountById) {
         this.Items.find(function(item) {
-          if(item.id == id) {
+          if(item.id === id) {
             item["count"] = this.productCountById[id]
             countForCheck.push(item)
           }
