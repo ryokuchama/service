@@ -47,7 +47,7 @@
           合計金額:{{totalPrice}}
         </v-toolbar>
         <v-list three-line subheader>
-          <v-list-item v-for="com in cart" :key="com">
+          <v-list-item v-for="com in computedCart" :key="com">
             <v-list-item-content>
               <v-list-item-title v-text="com.title">
               </v-list-item-title>
@@ -117,16 +117,16 @@
     checkCart() {
       this.dialog = true
 
-      var countForCheck = []
-      for (let id in this.productCountById) {
+      var countItemsInCart = []
+      for (let id in this.productCountById){
         this.Items.find(function(item) {
           if(item.id === id) {
             item["count"] = this.productCountById[id]
-            countForCheck.push(item)
+            countItemsInCart.push(item)
           }
         });
       }
-      this.computedCart = countForCheck
+      this.computedCart = countItemsInCart
       console.log(this.computedCart)
     }
   },

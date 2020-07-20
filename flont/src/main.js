@@ -8,11 +8,15 @@ Vue.config.productionTip = false
 var store = {
   debug: true,
   state: {
-
+    computedCart: []
   },
-  containsOfCart() {
 
+  // カート内を共通状態管理
+  containsOfCart(newValue) {
+    if (this.debug) console.log('contains of cart', newValue)
+    this.state.computedCart = newValue
   },
+  // 時間と場所の共通状態管理
   timeAndPhoneNumber() {
 
   }
