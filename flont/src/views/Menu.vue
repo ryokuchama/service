@@ -3,9 +3,6 @@
   <v-container>
     <v-row>
       <v-col>
-        <div class="debug" v-for="com in computedCart" :key="com">
-          注文内容{{com}}
-        </div>
         <v-card class="mx-auto" max-width="auto" height="300"
         v-for="item in Items" :key="item.id">
           <v-img
@@ -50,7 +47,7 @@
           合計金額:{{totalPrice}}
         </v-toolbar>
         <v-list three-line subheader>
-          <v-list-item v-for="com in computedCart" :key="com">
+          <v-list-item v-for="com in cart" :key="com">
             <v-list-item-content>
               <v-list-item-title v-text="com.title">
               </v-list-item-title>
