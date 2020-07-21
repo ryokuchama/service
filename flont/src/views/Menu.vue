@@ -108,7 +108,7 @@
       var deleteItem = this.cart.indexOf(id);
       this.cart.splice(deleteItem, 1);
     },
-    amount : function(productId) {
+    amount: function(productId) {
       var filtered = this.cart.filter(function(p) {
         return (p.id == productId);
       });
@@ -117,17 +117,16 @@
     checkCart() {
       this.dialog = true
 
-      var countItemsInCart = []
+      var countForCheckOut = []
       for (let id in this.productCountById){
-        this.Items.find(function(item) {
-          if(item.id === id) {
+        this.products.find(function(item) {
+          if (item.id === id) {
             item["count"] = this.productCountById[id]
-            countItemsInCart.push(item)
+            countForCheckOut.push(item)
           }
         });
       }
-      this.computedCart = countItemsInCart
-      console.log(this.computedCart)
+      this.computedCart = countForCheckOut
     }
   },
   computed: {
@@ -146,6 +145,12 @@
       return total
     }
   },
+  mounted() {
+    axios
+      .get('https://get')
+      .then(response => (this.Items = response))
+      .catch(error => (this.Items = error))
+  }
 }
 </script>
 
