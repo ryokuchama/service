@@ -94,7 +94,6 @@
         ],
         totalprice: Number,      
         // v-stepperの追加
-        // Card.vueの廃止とこちら側で全ての実装
       }
     },
     methods: {
@@ -120,7 +119,7 @@
       var countForCheckOut = []
       for (let id in this.productCountById){
         this.products.find(function(item) {
-          if (item.id === id) {
+          if (item.id == id) {
             item["count"] = this.productCountById[id]
             countForCheckOut.push(item)
           }
