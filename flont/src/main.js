@@ -14,13 +14,13 @@ var store = {
   },
 
   // カート内を共通状態管理
-  containsOfCart(newValue) {
-    if (this.debug) console.log('contains of cart', newValue)
+  containsOfCart(newCart) {
+    if (this.debug) console.log('contains of cart', newCart)
     this.state.computedCart = newValue
   },
   // 時間と場所の共通状態管理
-  timeAndPhoneNumber() {
-
+  timeAndPhoneNumber(newTime) {
+    if (this.debug) console.log('time and phonenumber', newTime)
   }
 }
 
