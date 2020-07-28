@@ -145,7 +145,7 @@
     }
   },
   mounted() {
-    axios
+    this.axios
       .get('https://get')
       .then(response => (this.Items = response))
       .catch(error => (this.Items = error))

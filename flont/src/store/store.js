@@ -1,6 +1,7 @@
 import Vue from 'vue';
-import vuex from 'vuex'
+import vuex from 'vuex';
 
+import axios from 'axios';
 import counter from './store/counter';
 
 Vue.use(vuex);
