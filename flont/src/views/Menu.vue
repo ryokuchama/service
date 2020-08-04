@@ -36,10 +36,10 @@
     </v-row>
     <!--dialog-->
     <v-dialog
-      v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
+      v-model="dialogVisible" fullscreen hide-overlay transition="dialog-bottom-transition">
       <v-card>
         <v-toolbar dark color="primary">
-          <v-btn @click="dialog = false">
+          <v-btn @click="dialogVisible = false">
             <v-icon>mdi-close</v-icon>
           </v-btn>
           <v-toolbar-title class="text-center">注文内容と合計金額</v-toolbar-title>
@@ -79,9 +79,9 @@
 
     data () {
       return {
-        cart: [],
-        computedCart: [],
-        dialog: false,
+        cart: [], //カート
+        computedCart: [], //DB書き込み用カート
+        dialogVisible: false,
         com: 1,
         Items: [
           { id: 1, title: 'ポキ丼', price: 1000, text: 'マグロとサーモンを特製のタレで和えました' },
@@ -92,33 +92,37 @@
           { id: 6, title: 'パフェ', price: 1000, text: '人気' },
           { id: 7, title: 'チーズケーキ', price: 1000, text: '美味しい' }
         ],
-        totalprice: Number,      
+        totalprice: Number, //総額
         // v-stepperの追加
       }
     },
     methods: {
+    //カート追加
     addToCart: function (id) {
       var selectedProdct = this.Items.find((item) => {
         return (item.id === id);
       });
       this.cart.push(selectedProdct)
     },
+    //カートから削除
     delFromCart: function (id) {
       var deleteItem = this.cart.indexOf(id);
       this.cart.splice(deleteItem, 1);
     },
+    //数量
     amount: function(productId) {
       var filtered = this.cart.filter(function(p) {
         return (p.id == productId);
       });
       return filtered.length
     },
+    //カート表示
     checkCart() {
-      this.dialog = true
+      this.dialogVisible = true
 
       var countForCheckOut = []
       for (let id in this.productCountById){
-        this.products.find(function(item) {
+        this.Items.find(function(item) {
           if (item.id == id) {
             item["count"] = this.productCountById[id]
             countForCheckOut.push(item)
@@ -129,6 +133,7 @@
     }
   },
   computed: {
+    //IDごとに数量をカウント
     productCountById: function () {
       var count = {}
       this.cart.forEach(function(item) {
@@ -137,6 +142,7 @@
       console.log(count);
       return count
     },
+    //総額計算処理
     totalPrice: function () {
       var total = this.cart.reduce(
         (sum, x) => sum + x.price, 0
