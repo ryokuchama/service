@@ -3,13 +3,22 @@
     <v-container fluid>
     <div class="delivery">
       <h2>ご連絡先</h2>
-      <v-text-field
-            v-model="adress"
-            :rules="rules"
-            counter="11"
-            hide-details="auto"
-            label="電話番号を入力してください(ハイフンなし)"
-          ></v-text-field>
+      <ValidationObserver
+      ref="observer" v-slot="{validate, reset}">
+        <form>
+          <ValidationProvider
+          v-slot="{errors}" name="Name" rules="required|Number">
+            <v-text-field
+                  v-model="adress"
+                  :rules="rules"
+                  counter="11"
+                  hide-details="auto"
+                  label="電話番号を入力してください(ハイフンなし)"
+                  required
+                ></v-text-field>
+          </ValidationProvider>
+        </form>
+      </ValidationObserver>
     </div>
     <div class="time">
       <h2>受け取り時刻</h2>
@@ -41,8 +50,14 @@
 
 <script>
 export default {
+  components: {
+    ValidationProvider,
+    ValidationObserver
+  },
     data() {
       return{
+        name: '',
+        
         minutes: [0, 10, 20, 30, 40, 50],
         hours: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
       }

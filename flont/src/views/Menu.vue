@@ -116,7 +116,7 @@
       });
       return filtered.length
     },
-    //カート表示
+    //カート表示 連想配列にCountカラム追加
     checkCart() {
       this.dialogVisible = true
 
@@ -130,6 +130,7 @@
         });
       }
       this.computedCart = countForCheckOut
+      console.log(this.computedCart)
     }
   },
   computed: {
