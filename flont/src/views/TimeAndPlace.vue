@@ -15,6 +15,8 @@
                   hide-details="auto"
                   label="電話番号を入力してください(ハイフンなし)"
                   required
+                  @input="$v.name.$touch()"
+                  @blur="$v.name.$touch()"
                 ></v-text-field>
           </ValidationProvider>
         </form>
@@ -49,6 +51,16 @@
 </template>
 
 <script>
+import {required} from 'vee-validate/dist/rules'
+import {extend, ValidationObserver, ValidationProvider, setInteractionMode} from 'vee-validate'
+
+setInteractionMode('eager')
+
+extend('required', {
+  ...required,
+  message: '{_field_} can not be empty',
+})
+
 export default {
   components: {
     ValidationProvider,
@@ -57,10 +69,16 @@ export default {
     data() {
       return{
         name: '',
-        
+
         minutes: [0, 10, 20, 30, 40, 50],
         hours: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
       }
+    },
+    methods: {
+      put () {
+        this.$refs.observer.validate()
+      },
+      
     }
 }
 </script>
