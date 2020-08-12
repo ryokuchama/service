@@ -24,7 +24,7 @@
             @click="addToCart(item.id)">
               <v-icon dark>mdi-plus</v-icon>
             </v-btn>
-            {{amount(item.id)}}
+              {{amount(item.id)}}
             <v-btn
             class="mx-2" fab dark small color="indigo"
             @click="delFromCart(item.id)">
@@ -34,6 +34,7 @@
         </v-card>
       </v-col>
     </v-row>
+    
     <!--dialog-->
     <v-dialog
       v-model="dialogVisible" fullscreen hide-overlay transition="dialog-bottom-transition">
@@ -73,7 +74,6 @@
 </template>
 
 <script>
-
   export default {
     name: 'Menu',
 
@@ -83,6 +83,7 @@
         computedCart: [], //DB書き込み用カート
         dialogVisible: false,
         com: 1,
+        // 商品リスト
         Items: [
           { id: 1, title: 'ポキ丼', price: 1000, text: 'マグロとサーモンを特製のタレで和えました' },
           { id: 2, title: 'チーズバーガー', price: 1000, text: '人気メニュー' },
@@ -92,19 +93,19 @@
           { id: 6, title: 'パフェ', price: 1000, text: '人気' },
           { id: 7, title: 'チーズケーキ', price: 1000, text: '美味しい' }
         ],
-        totalprice: Number, //総額
+        totalprice: Number, // 総額
         // v-stepperの追加
       }
     },
     methods: {
-    //カート追加
+    // カート追加
     addToCart: function (id) {
       var selectedProdct = this.Items.find((item) => {
         return (item.id === id);
       });
       this.cart.push(selectedProdct)
     },
-    //カートから削除
+    // カートから削除
     delFromCart: function (id) {
       var deleteItem = this.cart.indexOf(id);
       this.cart.splice(deleteItem, 1);
@@ -123,7 +124,7 @@
       var countForCheckOut = []
       for (let id in this.productCountById){
         this.Items.find(function(item) {
-          if (item.id == id) {
+          if (item.id === id) {
             item["count"] = this.productCountById[id]
             countForCheckOut.push(item)
           }
