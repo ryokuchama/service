@@ -79,7 +79,7 @@
 
     data () {
       return {
-        cart: [], //カート
+        cart: [],         //カート
         computedCart: [], //DB書き込み用カート
         dialogVisible: false,
         com: 1,
