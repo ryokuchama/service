@@ -141,7 +141,6 @@
       this.cart.forEach(function(item) {
         count[item.id] = (count[item.id])? count[item.id] + 1 : 1 ;
       });
-      console.log(count);
       return count
     },
     //総額計算処理

@@ -4,7 +4,7 @@
     <div class="delivery">
       <h2>ご連絡先</h2>      
         <v-text-field
-              v-model="adress"
+              v-model="phoneNumber"
               :rules="[rule.required, rule.phone]"
               counter="11"
               hide-details="auto"
@@ -26,7 +26,7 @@
       :rules="[rule.required]">
       </v-select>
       <v-text-field
-            v-model="adress"
+            v-model="note"
             hide-details="auto"
             label="苦手な食べ物やその他ご要望がございましたらご記入ください。"
           ></v-text-field>
@@ -45,9 +45,10 @@
 export default {
     data() {
       return{
-        name: '',
+        phoneNumber: String,
         minutes: [0, 10, 20, 30, 40, 50],
         hours: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+        note: '',
         success: false,
         rule: {
           required: value => !!value || "入力してください",

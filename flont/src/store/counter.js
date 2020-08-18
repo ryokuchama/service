@@ -1,5 +1,9 @@
 const state = {
-    count: 0
+    conputedCart: [],
+    hours: 0,
+    minites: 0,
+    phoneNumber: String,
+    note: ''
 };
 
 const mutations = {
