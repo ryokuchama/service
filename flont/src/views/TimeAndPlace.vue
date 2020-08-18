@@ -5,11 +5,10 @@
       <h2>ご連絡先</h2>      
         <v-text-field
               v-model="adress"
-              :rules="[rules.required, rules.phone]"
+              :rules="[rule.required, rule.phone]"
               counter="11"
               hide-details="auto"
               label="電話番号を入力してください(ハイフンなし)"
-              required
             ></v-text-field>
     </div>
     <div class="time">
@@ -18,17 +17,16 @@
       :items = "hours"
       label="時"
       outlined
-      :rules="[rules.requires]">
+      :rules="[rule.required]">
       </v-select>
       <v-select
       :items = "minutes"
       label="分"
       outlined
-      :rules="[rules.requires]">
+      :rules="[rule.required]">
       </v-select>
       <v-text-field
             v-model="adress"
-            :rules="rules"
             hide-details="auto"
             label="苦手な食べ物やその他ご要望がございましたらご記入ください。"
           ></v-text-field>
@@ -51,10 +49,10 @@ export default {
         minutes: [0, 10, 20, 30, 40, 50],
         hours: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
         success: false,
-        rules: {
+        rule: {
           required: value => !!value || "入力してください",
           phone: value => {
-            const pattern = [0-9]
+            const pattern = "[0-9]"
             return pattern.test(value) || '適切な電話番号を入力してください'
           }
         }
