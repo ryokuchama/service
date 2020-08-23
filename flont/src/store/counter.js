@@ -1,5 +1,6 @@
 const state = {
     conputedCart: [],
+    totalPrice: 0,
     hours: 0,
     minites: 0,
     phoneNumber: String,
@@ -19,8 +20,23 @@ const actions = {
 };
 
 const getters = {
-    currentCount: state => {
-        return state.count;
+    currentCart: state => {
+        return state.computedCart;
+    },
+    currentTotalPrice: state => {
+        return state.totalPrice;
+    },
+    hour: state => {
+        return state.hours;
+    },
+    minute: state => {
+        return state.minutes;
+    },
+    phoneNum: state => {
+        return state.phoneNumber;
+    },
+    note: state => {
+        return state.note;
     }
 }
 
