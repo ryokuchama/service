@@ -49,7 +49,18 @@ export default {
         }
     },
     methods: {
-        
+        getTime() {
+            const date = new Date();
+            const datetimeFormat = 'YYYYMMDD_hhmi';
+            let toFileName = datatimeFormat
+                .replace(/YYYY/g, String(date.getFullYear()))
+                .replace(/MM/g, ('0' + (date.getMonth() + 1)).slice(-2))
+                .replace(/DD/g, ('0' + date.getDate()).slice(-2))
+                .replace(/hh/g, ('0' + date.getHours()).slice(-2))
+                .replace(/mi/g, ('0' + date.getMinutes()).slice(-2));
+
+            return toFileName
+        },
     }
 }
 </script>
