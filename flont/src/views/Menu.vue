@@ -67,7 +67,7 @@
       <v-spacer></v-spacer>
       合計金額:{{totalPrice}}
       <v-spacer></v-spacer>
-      <v-btn tag="v-btn" to="/TimeAndPlace" width="250">Step2: 受け取り場所と時間</v-btn>
+      <v-btn tag="v-btn" to="/TimeAndPlace" width="250" v-if="check">Step2: 受け取り場所と時間</v-btn>
     </v-footer>
   </v-container>
 </v-app>
@@ -82,16 +82,17 @@
         cart: [],         //カート
         computedCart: [], //DB書き込み用カート
         dialogVisible: false,
+        content: false,
         com: 1,
         // 商品リスト
         Items: [
-          { id: 1, title: 'ポキ丼', price: 1000, text: 'マグロとサーモンを特製のタレで和えました' },
-          { id: 2, title: 'チーズバーガー', price: 1000, text: '人気メニュー' },
-          { id: 3, title: 'フライドポテト', price: 500, text: 'みんな大好き' },
-          { id: 4, title: 'ビール', price: 500, text: 'お気に入り' },
-          { id: 5, title: 'コーラ', price: 500, text: 'おすすめ' },
-          { id: 6, title: 'パフェ', price: 1000, text: '人気' },
-          { id: 7, title: 'チーズケーキ', price: 1000, text: '美味しい' }
+          { id: 1, title: 'ポキ丼', price: 1000, text: 'マグロとサーモンを特製のタレで和えました', photo: '../assets/ポキ.png'},
+          { id: 2, title: 'チーズバーガー', price: 1000, text: '人気メニュー', photo: '../assets/チーズバーガー.png'},
+          { id: 3, title: 'フライドポテト', price: 500, text: 'みんな大好き', photo: '../assets/フライドポテト.png'},
+          { id: 4, title: 'ビール', price: 500, text: 'お気に入り', photo: '../assets/ビール.png'},
+          { id: 5, title: 'コーラ', price: 500, text: 'おすすめ', photo: '../assets/コーラ.png'},
+          { id: 6, title: 'パフェ', price: 1000, text: '人気', photo: '../assets/パフェ.png'},
+          { id: 7, title: 'チーズケーキ', price: 1000, text: '美味しい', photo: '../assets/ケーキ.png'}
         ],
         totalprice: Number, // 総額
         // v-stepperの追加
@@ -132,7 +133,7 @@
       }
       this.computedCart = countForCheckOut
       console.log(this.computedCart)
-    }
+    },
   },
   computed: {
     //IDごとに数量をカウント

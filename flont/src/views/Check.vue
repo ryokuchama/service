@@ -52,7 +52,7 @@ export default {
         getTime() {
             const date = new Date();
             const datetimeFormat = 'YYYYMMDD_hhmi';
-            let toFileName = datatimeFormat
+            let toFileName = datetimeFormat
                 .replace(/YYYY/g, String(date.getFullYear()))
                 .replace(/MM/g, ('0' + (date.getMonth() + 1)).slice(-2))
                 .replace(/DD/g, ('0' + date.getDate()).slice(-2))
