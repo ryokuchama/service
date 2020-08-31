@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ryokuchama/macys#readme",
   "dependencies": {
+    "vee-validate": "^3.3.9",
     "vue": "^2.6.11",
     "vuex": "^3.3.0"
   }
