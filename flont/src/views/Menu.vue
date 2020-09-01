@@ -67,7 +67,7 @@
       <v-spacer></v-spacer>
       合計金額:{{totalPrice}}
       <v-spacer></v-spacer>
-      <v-btn tag="v-btn" to="/TimeAndPlace" width="250" v-if="check">Step2: 受け取り場所と時間</v-btn>
+      <v-btn tag="v-btn" to="/TimeAndPlace" width="250">Step2: 受け取り場所と時間</v-btn>
     </v-footer>
   </v-container>
 </v-app>
