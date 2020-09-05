@@ -54,8 +54,6 @@
               </v-list-item-title>
               <v-list-item-sub-title v-text="com.count">
               </v-list-item-sub-title>
-              <v-list-tile-sub-title v-text="com.price">    
-              </v-list-tile-sub-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>

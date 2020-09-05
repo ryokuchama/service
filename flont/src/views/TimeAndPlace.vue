@@ -48,7 +48,7 @@
       <v-footer class="ma-1" color="primary" fixed>
         <v-btn tag="v-btn" to="/">←メニューを選び直す</v-btn>
         <v-spacer></v-spacer>
-        <v-btn @click="check" tag="v-btn" to="/Check">Step3: 注文内容確認→</v-btn>
+        <v-btn :disabled="errors.any() || !isFormCompleted" tag="v-btn" to="/Check">Step3: 注文内容確認→</v-btn>
       </v-footer>
       </ValidationObserver>
     </v-container>
@@ -88,9 +88,6 @@ export default {
       }
     },
     methods: {
-      check() {
-        this.$refs.observer.validate()
-      },
     }
 }
 </script>
