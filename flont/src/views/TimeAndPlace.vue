@@ -87,7 +87,17 @@ export default {
         success: false,
       }
     },
-    methods: {
+    computed: {
+      isFormCompleted: function() {
+        if (
+          !this.model.param1 ||
+          !this.model.param2 ||
+          !this.model.param3
+        ){
+          return false
+        }
+        return true
+      }
     }
 }
 </script>
