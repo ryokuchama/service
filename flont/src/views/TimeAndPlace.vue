@@ -5,11 +5,12 @@
         <div class="delivery">
           <h2>ご連絡先</h2>
           <form>
-            <ValidationProvider v-slot="{errors}" rules="required|max:11">
+            <ValidationProvider v-slot="{errors, valid}" rules="required|max:11">
               <v-text-field
                     v-model="phoneNumber"
                     :counter="11"
                     :error-messages="errors"
+                    :success="valid"
                     hide-details="auto"
                     label="電話番号を入力してください(ハイフンなし)"
                     required
@@ -24,6 +25,7 @@
           v-model="hour"
           :items = "hours"
           :error-messages="errors"
+          :success="valid"
           data-vv-name="hour"
           label="時"
           outlined
@@ -33,6 +35,7 @@
           v-model="minute"
           :items = "minutes"
           :error-messages="errors"
+          :success="valid"
           data-vv-name="minute"
           label="分"
           outlined
@@ -48,7 +51,10 @@
       <v-footer class="ma-1" color="primary" fixed>
         <v-btn tag="v-btn" to="/">←メニューを選び直す</v-btn>
         <v-spacer></v-spacer>
-        <v-btn :disabled="errors.any() || !isFormCompleted" tag="v-btn" to="/Check">Step3: 注文内容確認→</v-btn>
+        <v-btn  
+        :disabled="invalid"
+        @click="check"
+        tag="v-btn" to="/Check">Step3: 注文内容確認→</v-btn>
       </v-footer>
       </ValidationObserver>
     </v-container>
@@ -87,16 +93,13 @@ export default {
         success: false,
       }
     },
-    computed: {
-      isFormCompleted: function() {
-        if (
-          !this.model.param1 ||
-          !this.model.param2 ||
-          !this.model.param3
-        ){
-          return false
-        }
-        return true
+    methods: {
+      check() {
+        this.$refs.observer.validate().then(
+          result => {
+            console.log('check'), result
+          }
+        )
       }
     }
 }
