@@ -51,10 +51,12 @@
       <v-footer class="ma-1" color="primary" fixed>
         <v-btn tag="v-btn" to="/">←メニューを選び直す</v-btn>
         <v-spacer></v-spacer>
-        <v-btn  
-        :disabled="invalid"
-        @click="check"
-        tag="v-btn" to="/Check">Step3: 注文内容確認→</v-btn>
+        <ValidationProvider>
+          <v-btn  
+          :disabled="invalid"
+          @click="check"
+          tag="v-btn" to="/Check">Step3: 注文内容確認→</v-btn>
+        </ValidationProvider>
       </v-footer>
       </ValidationObserver>
     </v-container>
@@ -69,12 +71,12 @@ setInteractionMode('eager')
 
 extend('required', {
   ...required,
-  message: '{_field_}入力してください',
+  message: '入力してください',
 })
 
 extend('max', {
   ...max,
-  message: '{_field_}長すぎます',
+  message: '長すぎます',
 })
 
 export default {
