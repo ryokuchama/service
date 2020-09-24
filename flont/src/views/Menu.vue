@@ -1,6 +1,7 @@
 <template>
 <v-app>
   <v-container>
+    <ValidationObserver>
     <v-row>
       <v-col>
         <v-card class="mx-auto" max-width="auto" height="300"
@@ -67,6 +68,7 @@
       <v-spacer></v-spacer>
       <v-btn tag="v-btn" to="/TimeAndPlace" width="250">Step2: 受け取り場所と時間</v-btn>
     </v-footer>
+    </ValidationObserver>
   </v-container>
 </v-app>
 </template>

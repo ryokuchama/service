@@ -55,6 +55,7 @@
           <v-btn  
           :disabled="invalid"
           @click="check"
+          color="success"
           tag="v-btn" to="/Check">Step3: 注文内容確認→</v-btn>
         </ValidationProvider>
       </v-footer>
