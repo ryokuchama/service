@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import vuex from 'vuex';
-import axios from 'axios';
 
 import counter from '../store/counter';
 
@@ -21,10 +20,7 @@ export default new vuex.Store({
         note: ''
     },
     mutations: {
-        getMenu(state) {
-            state.conputedCart = computedCart;
-        },
-        get
+        
     }
 
 });
